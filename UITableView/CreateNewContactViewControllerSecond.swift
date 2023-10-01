@@ -20,7 +20,6 @@ final class CreateNewContactViewController: UIViewController {
 }
 
 private extension CreateNewContactViewController {
-    
     private func dismiss() {
         dismiss(animated: true)
     }
