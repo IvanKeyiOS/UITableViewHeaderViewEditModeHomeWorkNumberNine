@@ -13,7 +13,6 @@ struct Person {
 }
 
 final class PersonViewController: UITableViewController {
-    
     private var data: [Character: [Person]] = [:] {
         didSet {
             tableView.reloadData()
@@ -51,15 +50,18 @@ final class PersonViewController: UITableViewController {
         cell.configure(with: viewModel)
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = TableHeaderView()
         let title = sectionTitle[section]
         view.configure(with: TableHeaderViewModel(title: title))
         return view
     }
+    
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         .delete
     }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let key = sectionTitle[indexPath.row]
@@ -69,7 +71,6 @@ final class PersonViewController: UITableViewController {
 }
 
 private extension PersonViewController {
-    
     func makeViewModel(from person: Person) -> PersonTableViewModel {
         let nameAttributed = NSAttributedString(string: person.name,
                                                 attributes: [.font: UIFont.systemFont(ofSize: 17,weight: .bold)])
@@ -92,9 +93,9 @@ private extension PersonViewController {
         } else {
             sectionTitle.append(firstLetter)
             data[firstLetter] = [person]
-            
         }
     }
+    
     @objc func AddAction() {
         let storyboard = UIStoryboard(name: "CreateNewContact", bundle: nil)
         guard let vc  = storyboard.instantiateViewController(withIdentifier: "CreateNewContactViewController") as? CreateNewContactViewController else { return }
@@ -102,7 +103,6 @@ private extension PersonViewController {
             guard let self else { return }
             self.fillContact(person: person)
         }
-        
         navigationController?.present(vc, animated: true)
     }
 }

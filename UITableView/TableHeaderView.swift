@@ -10,7 +10,6 @@ struct TableHeaderViewModel {
     let title: Character
 }
 
-
 final class TableHeaderView: UIView {
     
     private var titleLabel: UILabel = {
@@ -40,7 +39,6 @@ final class TableHeaderView: UIView {
                     titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
                     titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
                     titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-                    titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
-                ])
+                    titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)])
     }
 }
